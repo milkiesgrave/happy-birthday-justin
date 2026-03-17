@@ -95,7 +95,33 @@ video {
 
 <script>
 function startRickRoll() {
-<iframe width="560" height="315" src="https://www.youtube.com/embed/hB7CDrVnNCs?si=7b7GdDncKP7KDESu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  // Hide start screen
+  document.getElementById("startScreen").style.display = "none";
+  document.getElementById("videoContainer").style.display = "block";
+
+  // Fullscreen
+  const elem = document.documentElement;
+  if (elem.requestFullscreen) elem.requestFullscreen();
+
+  // Load video
+  const video = document.getElementById("video");
+  const source = document.getElementById("videoSource");
+
+  // ✅ Put your local file or GitHub RAW link here
+  // Example: local file: "rickroll.mp4"
+  // Example: GitHub RAW: "https://raw.githubusercontent.com/username/repo/main/rickroll.mp4"
+  source.src = "rickroll.mp4" type= "Video/mp4";
+
+  video.load();
+  video.play();
+
+  // Prevent pause
+  video.addEventListener("pause", () => video.play());
+
+  // Loop forever
+  video.addEventListener("ended", () => {
+    video.currentTime = 0;
+    video.play();
   });
 }
 </script>
