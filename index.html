@@ -17,76 +17,39 @@ body {
   flex-direction: column;
 }
 
-.container {
-  text-align: center;
-}
+.container { text-align: center; }
 
-img {
-  width: 300px;
-  transition: transform 0.6s;
-}
+img { width: 300px; transition: transform 0.6s; }
 
-button {
-  border: none;
-  background: none;
-  cursor: pointer;
-  position: relative;
-}
+button { border: none; background: none; cursor: pointer; position: relative; }
 
-button:hover img {
-  transform: rotate(360deg) scale(1.1);
-}
+button:hover img { transform: rotate(360deg) scale(1.1); }
 
 .overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
+  position: absolute; inset: 0; display: flex; justify-content: center; align-items: center; opacity: 0;
   transition: 0.3s;
 }
 
-button:hover .overlay {
-  opacity: 1;
-}
+button:hover .overlay { opacity: 1; }
 
-.overlay span {
-  background: rgba(0,0,0,0.6);
-  padding: 6px 10px;
-  border-radius: 6px;
-}
+.overlay span { background: rgba(0,0,0,0.6); padding: 6px 10px; border-radius: 6px; }
 
-#videoContainer {
-  display: none;
-  width: 100vw;
-  height: 100vh;
-  background: black;
-}
+#videoContainer { display: none; width: 100vw; height: 100vh; background: black; }
 
-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+video { width: 100%; height: 100%; object-fit: cover; }
 </style>
 </head>
 
 <body>
 
-<!-- START SCREEN -->
 <div class="container" id="startScreen">
   <h1>Happy birthday Justin!</h1>
-
   <button onclick="startRickRoll()">
     <img src="https://i.ibb.co/9mqmb2xs/image-2026-03-17-214213699.png" alt="click me" />
-    <div class="overlay">
-      <span>click me</span>
-    </div>
+    <div class="overlay"><span>click me</span></div>
   </button>
 </div>
 
-<!-- VIDEO SCREEN -->
 <div id="videoContainer">
   <video id="video" autoplay playsinline>
     <source id="videoSource" src="" type="video/mp4">
@@ -95,24 +58,17 @@ video {
 
 <script>
 function startRickRoll() {
-  // Hide start screen
   document.getElementById("startScreen").style.display = "none";
   document.getElementById("videoContainer").style.display = "block";
 
-  // Fullscreen
   const elem = document.documentElement;
   if (elem.requestFullscreen) elem.requestFullscreen();
 
-  // Load video
   const video = document.getElementById("video");
   const source = document.getElementById("videoSource");
 
-  // ✅ Put your local file or GitHub RAW link here
-  // Example: local file: "rickroll.mp4"
-  // Example: GitHub RAW: "https://raw.githubusercontent.com/username/repo/main/rickroll.mp4"
-  <video>
-    source.src = "https://github.com/milkiesgrave/happy-birthday-justin/blob/abe438dddacc3226290c8236773088607757aecd/rickroll.mp4" type= "Video/mp4";
-  </video>
+  // ✅ Use GitHub RAW URL or local file
+  source.src = "https://raw.githubusercontent.com/milkiesgrave/happy-birthday-justin/abe438dddacc3226290c8236773088607757aecd/rickroll.mp4";
 
   video.load();
   video.play();
